@@ -13,7 +13,7 @@ public class MainInstaller : MonoInstaller
 
         Container.Bind<InputManager>().AsSingle();
         Container.Bind<Plate>().AsSingle();
-
+        Container.Bind<Shelves>().AsSingle();
 
     }
 }

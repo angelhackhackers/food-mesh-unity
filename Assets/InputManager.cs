@@ -28,7 +28,7 @@ public class InputManager : MonoBehaviour
 
         if (OVRInput.Get(OVRInput.Touch.PrimaryTouchpad))
         {
-            signalBus.Fire(new DraggingSignal() { vector2 = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad)});
+            //signalBus.Fire(new DraggingSignal() { vector2 = OVRInput.Get(OVRInput.Axis2D.PrimaryTouchpad)});
         }
 
         if (OVRInput.GetUp(OVRInput.Touch.PrimaryTouchpad))
@@ -48,7 +48,7 @@ public class InputManager : MonoBehaviour
 
                 }
             }
-            else if (Mathf.Abs(currentTouchPosition.y - startTouchPosition.y) > 0.5f)
+             if (Mathf.Abs(currentTouchPosition.y - startTouchPosition.y) > 0.5f)
             {
                 if (currentTouchPosition.y > startTouchPosition.y)
                 {
