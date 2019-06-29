@@ -48,11 +48,17 @@ public class GoogleMap : MonoBehaviour
     public GoogleMapMarker[] markers;
     public GoogleMapPath[] paths;
 
+    void Awake()
+    {
+        transform.parent.localScale = Vector3.zero;
+    }
 
     void Start()
     {
         if (loadOnStart)
+        {
             Refresh();
+        }
     }
 
     public void Refresh()
@@ -81,6 +87,7 @@ public class GoogleMap : MonoBehaviour
         qs += "&size=" + UnityWebRequest.UnEscapeURL(string.Format("{0}x{0}", size));
         qs += "&scale=" + (doubleResolution ? "2" : "1");
         qs += "&maptype=" + mapType.ToString().ToLower();
+        qs += "&style=feature:poi|element:labels|visibility:off";
         var usingSensor = false;
 
 #if UNITY_IPHONE
