@@ -99,7 +99,7 @@ public class VRaycaster : MonoBehaviour
                 lineRenderer.SetPosition(1, hit.point);
             }
 
-            if (currentHover == null && hit.collider.gameObject.GetComponent<GoogleButton>() != null)
+            if (currentHover == null )
             {
                 currentHover = hit.collider.gameObject;
                 if (hit.collider.gameObject.GetComponent<GoogleButton>() != null)
@@ -134,21 +134,27 @@ public class VRaycaster : MonoBehaviour
                 }
             }
         }
-        else if (currentHover != null)
+        else
         {
-            if (hit.collider.gameObject.GetComponent<GoogleButton>() != null)
+            if(currentHover == null)
             {
-                hit.collider.gameObject.GetComponent<GoogleButton>().OnEndHover();
+                return;
             }
-            if (hit.collider.gameObject.GetComponent<DishData>() != null)
+
+            if (currentHover.GetComponent<GoogleButton>() != null)
             {
-                hit.collider.gameObject.GetComponent<DishData>().OnEndHover();
+                currentHover.GetComponent<GoogleButton>().OnEndHover();
             }
-            if (hit.collider.gameObject.GetComponent<BuyButton>() != null)
+            if (currentHover.GetComponent<DishData>() != null)
             {
-                hit.collider.gameObject.GetComponent<BuyButton>().OnEndHover();
+                currentHover.GetComponent<DishData>().OnEndHover();
+            }
+            if (currentHover.GetComponent<BuyButton>() != null)
+            {
+                currentHover.GetComponent<BuyButton>().OnEndHover();
             }
             currentHover = null;
         }
+       
     }
 }

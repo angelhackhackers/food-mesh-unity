@@ -63,14 +63,14 @@ public class GoogleButton : MonoBehaviour
 
     public void Start()
     {
-        DontDestroyOnLoad(this.gameObject);
+        //DontDestroyOnLoad(this.gameObject);
 
-        StartCoroutine(StartJsonRequest("http://ec2-3-112-206-55.ap-northeast-1.compute.amazonaws.com/"));
+        //StartCoroutine(StartJsonRequest("http://ec2-3-112-206-55.ap-northeast-1.compute.amazonaws.com/"));
     }
 
     public void OnHover()
     {
-        GetComponent<SpriteRenderer>().color = Color.grey;
+        //GetComponent<SpriteRenderer>().color = Color.grey;
 
     }
     public void OnEndHover()

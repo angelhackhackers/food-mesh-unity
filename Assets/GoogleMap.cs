@@ -25,9 +25,11 @@ using UnityEngine;
 using System.Collections;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using System;
 
 public class GoogleMap : MonoBehaviour
 {
+    private uRLJson uRLJson;
     public enum MapType
     {
         RoadMap,
@@ -48,14 +50,66 @@ public class GoogleMap : MonoBehaviour
     public GoogleMapMarker[] markers;
     public GoogleMapPath[] paths;
 
- 
+    IEnumerator StartJsonRequest(string targetUrl)
+    {
 
+
+        string url = targetUrl;
+        WWW www = new WWW(url);
+        yield return www;
+        if (www.error == null)
+        {
+            uRLJson = JsonUtility.FromJson<uRLJson>(www.text);
+
+            if (loadOnStart)
+            {
+                GoogleMapLocation[] locations = new GoogleMapLocation[1]{
+                    new GoogleMapLocation()
+                    {
+                        address = "",
+                        latitude = 35.67419f,
+                        longitude = 139.7682f
+                    }
+                };
+
+                GoogleMapLocation[] secondLocation = new GoogleMapLocation[1]{
+                    new GoogleMapLocation()
+                    {
+                        address = "",
+                        latitude = 35.673361f,
+                        longitude = 139.768244f
+                    }
+                };
+
+                markers = new GoogleMapMarker[2] {
+            new GoogleMapMarker()
+    {
+        color = GoogleMapColor.red,
+                    label = "Henri Charpentier Ginza Store",
+                    size = GoogleMapMarker.GoogleMapMarkerSize.Small,
+                    locations = locations
+                },
+    new GoogleMapMarker()
+    {
+        color = GoogleMapColor.orange,
+            label = "Henri Charpentier Ginza Store",
+            size = GoogleMapMarker.GoogleMapMarkerSize.Mid,
+            locations = secondLocation
+        }
+                };
+
+                Refresh();
+            }
+        }
+        else
+        {
+            Debug.Log("ERROR: " + www.error);
+        }
+    }
     void Start()
     {
-        if (loadOnStart)
-        {
-            Refresh();
-        }
+        StartCoroutine(StartJsonRequest("http://ec2-3-112-206-55.ap-northeast-1.compute.amazonaws.com/"));
+
     }
 
     public void Refresh()
