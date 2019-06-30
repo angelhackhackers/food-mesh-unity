@@ -48,10 +48,7 @@ public class GoogleMap : MonoBehaviour
     public GoogleMapMarker[] markers;
     public GoogleMapPath[] paths;
 
-    void Awake()
-    {
-        transform.parent.localScale = Vector3.zero;
-    }
+ 
 
     void Start()
     {

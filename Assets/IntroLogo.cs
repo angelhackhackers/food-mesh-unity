@@ -14,6 +14,8 @@ public class IntroLogo : MonoBehaviour
     public GameObject googleMapContainer;
     void Awake()
     {
+        googleMapContainer.transform.localScale = Vector3.zero;
+
         introText.transform.localScale = Vector3.zero;
         backgroundMesh.material.color = new Color(1, 1, 1, 0);
     }

@@ -52,7 +52,7 @@ public class Plate : MonoBehaviour
     {
         transform.DOScale(0, 0.25f).OnComplete(() =>
         {
-            transform.localPosition = new Vector3(EdgeValue, transform.localPosition.y);
+            transform.localPosition = new Vector3(EdgeValue, transform.localPosition.y, transform.localPosition.z);
             transform.DOScale(scale, 0.25f);
             transform.DOLocalMoveX(0, 0.5f).SetEase(Ease.InOutQuad);
         });
@@ -63,7 +63,7 @@ public class Plate : MonoBehaviour
     {
         transform.DOScale(0, 0.25f).OnComplete(() =>
         {
-            transform.localPosition = new Vector3(EdgeValue, transform.localPosition.y);
+            transform.localPosition = new Vector3(-EdgeValue, transform.localPosition.y, transform.localPosition.z);
             transform.DOScale(scale, 0.25f);
             transform.DOLocalMoveX(0, 0.5f).SetEase(Ease.InOutQuad);
         });
