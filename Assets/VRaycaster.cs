@@ -102,23 +102,52 @@ public class VRaycaster : MonoBehaviour
             if (currentHover == null && hit.collider.gameObject.GetComponent<GoogleButton>() != null)
             {
                 currentHover = hit.collider.gameObject;
-
-                currentHover.GetComponent<GoogleButton>().OnHover();
+                if (hit.collider.gameObject.GetComponent<GoogleButton>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<GoogleButton>().OnHover();
+                }
+                if (hit.collider.gameObject.GetComponent<DishData>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<DishData>().OnHover();
+                }
+                if (hit.collider.gameObject.GetComponent<BuyButton>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<BuyButton>().OnHover();
+                }
             }
 
             if (OVRInput.Get(OVRInput.Button.PrimaryHandTrigger) || OVRInput.Get(OVRInput.Button.One) ||
                 OVRInput.Get(OVRInput.RawButton.LIndexTrigger) || OVRInput.Get(OVRInput.RawButton.RIndexTrigger))
             {
-                currentHover.GetComponent<GoogleButton>().OnClicked();
-                if (hit.collider.gameObject.GetComponent<IClickable>() != null)
+
+                if (hit.collider.gameObject.GetComponent<GoogleButton>() != null)
                 {
-                    hit.collider.gameObject.GetComponent<IClickable>().OnClicked();
-                } 
+                    hit.collider.gameObject.GetComponent<GoogleButton>().OnClicked();
+                }
+                if (hit.collider.gameObject.GetComponent<DishData>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<DishData>().OnClicked();
+                }
+                if (hit.collider.gameObject.GetComponent<BuyButton>() != null)
+                {
+                    hit.collider.gameObject.GetComponent<BuyButton>().OnClicked();
+                }
             }
         }
         else if (currentHover != null)
         {
-            currentHover.GetComponent<GoogleButton>().OnEndHover();
+            if (hit.collider.gameObject.GetComponent<GoogleButton>() != null)
+            {
+                hit.collider.gameObject.GetComponent<GoogleButton>().OnEndHover();
+            }
+            if (hit.collider.gameObject.GetComponent<DishData>() != null)
+            {
+                hit.collider.gameObject.GetComponent<DishData>().OnEndHover();
+            }
+            if (hit.collider.gameObject.GetComponent<BuyButton>() != null)
+            {
+                hit.collider.gameObject.GetComponent<BuyButton>().OnEndHover();
+            }
             currentHover = null;
         }
     }

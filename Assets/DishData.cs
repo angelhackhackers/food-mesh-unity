@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class DishData : MonoBehaviour, IClickable
@@ -17,4 +18,13 @@ public class DishData : MonoBehaviour, IClickable
         SpotLight.transform.LookAt(transform);
     }
 
+    internal void OnEndHover()
+    {
+        //throw new NotImplementedException();
+    }
+
+    internal void OnHover()
+    {
+        //throw new NotImplementedException();
+    }
 }

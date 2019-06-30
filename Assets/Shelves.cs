@@ -40,7 +40,7 @@ public class Shelves : MonoBehaviour
         }
         else if (endDragSignal.DragDirection == DragDirection.DOWN)
         {
-            transform.DOLocalMoveY(0, 1f).SetEase(Ease.InOutQuad).OnComplete(GetNext);
+            transform.DOLocalMoveY(-10, 1f).SetEase(Ease.InOutQuad).OnComplete(GetNext);
 
         }
     }

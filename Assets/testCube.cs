@@ -19,6 +19,11 @@ public class testCube : MonoBehaviour
         {
             StartCoroutine(GetText("output"));
         }
+        if (Input.GetKeyDown(KeyCode.B))
+        {
+            StartCoroutine(StartModel());
+        }
+
     }
 
     IEnumerator GetText(string file_name)
@@ -38,5 +43,11 @@ public class testCube : MonoBehaviour
                 new ImporterContext().Load(savePath);
             }
         }
+    }
+
+    IEnumerator StartModel()
+    {
+        new ImporterContext().Load("untitled.glb");
+        yield return null;
     }
 }
