@@ -47,7 +47,7 @@ public class testCube : MonoBehaviour
 
     IEnumerator StartModel()
     {
-        new ImporterContext().Load("untitled.glb");
+        new ImporterContext().Load("light.glb");
         yield return null;
     }
 }
